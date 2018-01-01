@@ -1,0 +1,2 @@
+class FoodTruck < FoodVendor
+end
