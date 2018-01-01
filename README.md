@@ -1,24 +1,8 @@
-# README
+# Creation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is intended to showcase a Rails/PostgreSQL backend and a React frontend.
+It was initially created using `rails` command line generators and migrators.
 
-Things you may want to cover:
+    rails new foodporn --api --database=postgresql --webpack=react
+    rails db:create
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
