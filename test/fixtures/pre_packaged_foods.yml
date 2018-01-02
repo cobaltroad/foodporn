@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+shin_black:
   name: Shin Ramyun Black
   alias: Shin Black
   description: Premium version of Nongshim's traditional ramen
   manufacturer: Nongshim
 
-two:
+patti_labelle:
   name: Patti LaBelle Sweet Potato Pie
   alias:
   description: Made with California-grown sweet potatoes, butter & spice
