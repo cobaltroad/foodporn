@@ -1,4 +1,4 @@
-# Creation
+# Foodporn
 
 This application is intended to showcase a Rails/PostgreSQL backend and a React frontend.
 It was initially created using `rails` command line generators and migrators.

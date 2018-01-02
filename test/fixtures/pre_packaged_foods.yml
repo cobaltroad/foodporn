@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  alias: MyText
-  description: MyText
+  name: Shin Ramyun Black
+  alias: Shin Black
+  description: Premium version of Nongshim's traditional ramen
+  manufacturer: Nongshim
 
 two:
-  name: MyString
-  alias: MyText
-  description: MyText
+  name: Patti LaBelle Sweet Potato Pie
+  alias:
+  description: Made with California-grown sweet potatoes, butter & spice
+  manufacturer: Wal-Mart
