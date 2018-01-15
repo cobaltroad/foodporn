@@ -6,6 +6,9 @@ class ApplicationController < ActionController::API
   def authenticate_request
     if auth_token.blank?
       render json: { error: 'Not authenticated' }, status: :unauthorized
+    else
+      id = auth_token[:user] && auth_token[:user][:id]
+      @current_user = User.find(id)
     end
   end
 

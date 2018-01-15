@@ -9,7 +9,6 @@ class User < ApplicationRecord
       exp: 24.hours.from_now.to_i,
       user: {
         id: id,
-        password_digest: password_digest,
         last_login: last_login.to_i
       }
     }
