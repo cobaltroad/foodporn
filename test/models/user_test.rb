@@ -7,7 +7,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'can initialize with :password' do
-    new_user = User.new(username: 'foo', password: 'bar', password_salt: 'salt')
+    new_user = User.new(username: 'foo', password: 'bar')
     assert new_user.valid?
   end
 end

@@ -5,7 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# serializers
 gem 'active_model_serializers'
+
+# secure passwords
+gem 'bcrypt'
+
 # gem 'jwt'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

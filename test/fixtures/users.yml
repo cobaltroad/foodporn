@@ -2,5 +2,4 @@
 
 test:
   username: test
-  encrypted_password: 0a50261ebd1a390fed2bf326f2673c145582a6342d523204973d0219337f81616a8069b012587cf5635f6925f1b56c360230c19b273500ee013e030601bf2425
-  password_salt: bar
+  password_digest: $2a$04$nE4B9glxiQsqmTAbe7G21eXcXPF4Pb554TymzfosXxAN8OeeCmYJ2
