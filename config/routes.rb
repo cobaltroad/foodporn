@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'single_page_app#show'
 
   namespace :api do
+    resource :authentication, only: [:create], as: :login
+    resource :current_user, only: [:show]
+    resource :current_user, only: [:destroy], as: :logout
     resources :dishes, only: [:index]
   end
 

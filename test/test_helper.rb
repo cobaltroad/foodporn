@@ -6,4 +6,10 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def auth_bearer(user, expiration=24.hours.from_now.to_i)
+    {
+      "Authorization": "Bearer #{user.json_web_token(expiration)}"
+    }
+  end
 end
