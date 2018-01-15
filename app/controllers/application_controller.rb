@@ -9,9 +9,20 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def auth_token
-    @auth_token ||= if request.headers['Authorization'].present?
+  private
+
+  def http_token
+    @http_token ||= if request.headers['Authorization'].present?
                       request.headers['Authorization'].split(' ').last
+                    end
+  end
+
+  def auth_token
+    @auth_token ||= begin
+                      decoded = JWT.decode(http_token, Rails.application.secrets.secret_key_base)
+                      HashWithIndifferentAccess.new(decoded[0])
+                    rescue JWT::DecodeError
+                      nil
                     end
   end
 end

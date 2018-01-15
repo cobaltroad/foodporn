@@ -2,7 +2,7 @@ class Api::AuthenticationsController < ActionController::API
   def create
     user = User.find_by_username(authentication_params[:username])
     if user.try(:authenticate, authentication_params[:password])
-      render json: user.jwt_token, status: :created
+      render json: user.json_web_token, status: :created
     end
   end
 
