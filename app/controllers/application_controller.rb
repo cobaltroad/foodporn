@@ -1,14 +1,20 @@
 class ApplicationController < ActionController::API
   before_action :authenticate_request
 
+  class AlreadyLoggedOutError < StandardError
+  end
+
   private
 
   def authenticate_request
-    if auth_token.blank?
-      render json: { error: 'Not authenticated' }, status: :unauthorized
-    else
+    begin
       id = auth_token[:user] && auth_token[:user][:id]
-      @current_user = User.find(id)
+      user = User.find(id)
+      last_login = auth_token[:user] && auth_token[:user][:last_login]
+      raise AlreadyLoggedOutError unless last_login == user.last_login.to_i
+      @current_user = user
+    rescue
+      render json: { error: 'Not authenticated' }, status: :unauthorized
     end
   end
 
