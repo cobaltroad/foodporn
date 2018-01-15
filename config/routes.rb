@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'single_page_app#show'
 
   namespace :api do
+    resource :current_user, only: [:show]
     resources :dishes, only: [:index]
   end
 
