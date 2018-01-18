@@ -1,9 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { authenticationActions } from '../_actions';
+
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
+
+    this.props.dispatch(authenticationActions.logout());
 
     this.state = {
       username: '',
@@ -15,6 +19,17 @@ class LoginPage extends React.Component {
   onChange = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    this.setState({ submitted: true });
+    const { username, password } = this.state;
+    const { dispatch } = this.props;
+    if (username && password) {
+      dispatch(authenticationActions.login(username, password));
+    }
   }
 
   render() {
