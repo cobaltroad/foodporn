@@ -14,6 +14,9 @@ class LoginPage extends React.Component {
       password: '',
       submitted: false
     };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChange = (e) => {
@@ -56,4 +59,5 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(LoginPage);
+const connectedLoginPage = connect(mapStateToProps)(LoginPage);
+export { connectedLoginPage as LoginPage };
