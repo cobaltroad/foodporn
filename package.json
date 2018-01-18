@@ -10,6 +10,15 @@
     "semantic-ui-react": "^0.77.1"
   },
   "devDependencies": {
+    "jest": "^22.1.2",
     "webpack-dev-server": "^2.9.7"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "roots": [
+      "test/javascript"
+    ]
   }
 }
