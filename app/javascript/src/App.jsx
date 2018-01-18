@@ -1,8 +1,10 @@
-import React from 'react'
-import { Router, Route, browserHistory } from 'react-router';
+import React from 'react';
+import { Router, Route } from 'react-router';
 import { connect } from 'react-redux';
-
 import { Card, Grid, Header } from 'semantic-ui-react'
+
+import { history } from './_helpers';
+import routes from './routes'
 
 class App extends React.Component {
   constructor(props) {
@@ -33,6 +35,7 @@ class App extends React.Component {
             <span>And this one just uses a basic Header and span</span>
           </Grid.Column>
         </Grid>
+        <Router history={history} routes={routes} />
       </div>
     )
   }
@@ -46,5 +49,4 @@ function mapStateToProps(state) {
   };
 }
 
-const connectedApp = connect(mapStateToProps)(App);
-export default connectedApp;
+export default connect(mapStateToProps)(App);
