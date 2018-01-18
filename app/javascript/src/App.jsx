@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
 import { Card, Grid, Header } from 'semantic-ui-react'
@@ -47,4 +47,4 @@ function mapStateToProps(state) {
 }
 
 const connectedApp = connect(mapStateToProps)(App);
-export default App;
+export default connectedApp;
