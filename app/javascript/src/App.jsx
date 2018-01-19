@@ -1,9 +1,10 @@
 import React from 'react';
-import { Router, Route, Redirect } from 'react-router';
+import { Router, Route, Redirect, Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Sidebar, Segment, Menu, Icon, Header } from 'semantic-ui-react';
 
 import { history } from './_helpers';
+import { authenticationActions } from './_actions';
 import { LoginPage } from './LoginPage';
 import { Dashboard } from './Dashboard';
 
@@ -22,6 +23,13 @@ class App extends React.Component {
     super(props);
 
     const { dispatch } = this.props;
+
+    this.onClickLogout = this.onClickLogout.bind(this);
+  }
+
+  onClickLogout = (e) => {
+    e.preventDefault();
+    this.props.dispatch(authenticationActions.logout());
   }
 
   render() {
@@ -32,8 +40,12 @@ class App extends React.Component {
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical inverted>
             <Menu.Item name='dashboard'>
-              <Icon name='home' />
-              Home
+              <Icon name='dashboard' />
+              Dashboard
+            </Menu.Item>
+            <Menu.Item name='sign out' onClick={this.onClickLogout}>
+              <Icon name='sign out' />
+              Log Out
             </Menu.Item>
           </Sidebar>
           <Sidebar.Pusher>

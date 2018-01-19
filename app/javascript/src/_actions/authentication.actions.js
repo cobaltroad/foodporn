@@ -35,6 +35,7 @@ function login(username, password) {
 }
 
 function logout() {
-  // do service stuff
+  history.push('/login');
+  authenticationService.logout();
   return { type: authenticationConstants.LOGOUT };
 }
