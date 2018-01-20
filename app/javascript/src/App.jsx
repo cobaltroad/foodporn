@@ -33,20 +33,22 @@ class App extends React.Component {
   }
 
   render() {
-    const { alert } = this.props;
     let visible = true;
+    const { loggedIn } = this.props.authentication;
     return (
       <div>
         <Sidebar.Pushable as={Segment}>
           <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical inverted>
-            <Menu.Item name='dashboard'>
+            <Menu.Item name='dashboard' as='a' href='/'>
               <Icon name='dashboard' />
               Dashboard
             </Menu.Item>
-            <Menu.Item name='sign out' onClick={this.onClickLogout}>
-              <Icon name='sign out' />
-              Log Out
-            </Menu.Item>
+            {loggedIn && <div>
+              <Menu.Item name='sign out' onClick={this.onClickLogout}>
+                <Icon name='sign out' />
+                Log Out
+              </Menu.Item>
+            </div>}
           </Sidebar>
           <Sidebar.Pusher>
             <Segment basic>
@@ -66,9 +68,9 @@ class App extends React.Component {
 
 
 function mapStateToProps(state) {
-  const { alert } = state;
+  const { authentication } = state;
   return {
-    alert
+    authentication
   };
 }
 
