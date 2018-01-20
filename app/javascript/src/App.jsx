@@ -1,10 +1,10 @@
 import React from 'react';
 import { Router, Route, Redirect, Link } from 'react-router';
 import { connect } from 'react-redux';
-import { Sidebar, Segment, Menu, Icon, Header } from 'semantic-ui-react';
+import { Rail, Container, Segment, Menu, Icon, Input, Dropdown } from 'semantic-ui-react';
 
 import { history } from './_helpers';
-import { authenticationActions } from './_actions';
+import { LeftMenu } from './LeftMenu';
 import { LoginPage } from './LoginPage';
 import { Dashboard } from './Dashboard';
 
@@ -23,35 +23,35 @@ class App extends React.Component {
     super(props);
 
     const { dispatch } = this.props;
-
-    this.onClickLogout = this.onClickLogout.bind(this);
-  }
-
-  onClickLogout = (e) => {
-    e.preventDefault();
-    this.props.dispatch(authenticationActions.logout());
   }
 
   render() {
-    let visible = true;
-    const { loggedIn } = this.props.authentication;
     return (
       <div>
-        <Sidebar.Pushable as={Segment}>
-          <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical inverted>
-            <Menu.Item name='dashboard' as='a' href='/'>
-              <Icon name='dashboard' />
-              Dashboard
-            </Menu.Item>
-            {loggedIn && <div>
-              <Menu.Item name='sign out' onClick={this.onClickLogout}>
-                <Icon name='sign out' />
-                Log Out
-              </Menu.Item>
-            </div>}
-          </Sidebar>
-          <Sidebar.Pusher>
-            <Segment basic>
+        <Segment>
+          <Container>
+            <Menu attached='top'>
+              <Dropdown item icon='wrench' simple>
+                <Dropdown.Menu>
+                  <Dropdown.Header>Dropdown Header 1</Dropdown.Header>
+                  <Dropdown.Item>Item</Dropdown.Item>
+                  <Dropdown.Item>
+                    <Icon name='dropdown' />
+                    <span className='text'>Nested Menu</span>
+                    <Dropdown.Menu>
+                      <Dropdown.Item>Subitem 1</Dropdown.Item>
+                      <Dropdown.Item>Subitem 2</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Menu>
+            <Segment attached='bottom'>
+              <Segment>Test</Segment>
+              <Segment>Test</Segment>
+              <Segment>Test</Segment>
+              <Segment>Test</Segment>
+              <Segment>Test</Segment>
               <Router history={history}>
                 <div>
                   <PrivateRoute exact path="/" component={Dashboard} />
@@ -59,8 +59,9 @@ class App extends React.Component {
                 </div>
               </Router>
             </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
+          </Container>
+          <LeftMenu />
+        </Segment>
       </div>
     )
   }
@@ -68,9 +69,9 @@ class App extends React.Component {
 
 
 function mapStateToProps(state) {
-  const { authentication } = state;
+  const { alert } = state;
   return {
-    authentication
+    alert
   };
 }
 
